@@ -68,7 +68,7 @@ class Game
     end
 
     # the last player to move is the winner, X moves first
-    winner = x_move_count > o_move_count ? 'Player X' : 'Player O'
+    winner = x_move_count > o_move_count ? 'X' : 'O'
     "#{winner} wins!"
   end
 
@@ -115,6 +115,8 @@ class Player
   end
 
   def move(board)
+    cell = []
+
     loop do
       cell = [Random.rand(3), Random.rand(3)]
       break if board[cell[0]][cell[1]] == ' '
@@ -128,7 +130,7 @@ class Player
     player_type = ''
 
     loop do
-      puts "Player #{move_type}: human or computer?"
+      puts "Player #{move_type.upcase}: human or computer?"
       player_type = gets.chomp.downcase
       break if %w[human h computer c].include?(player_type)
 
